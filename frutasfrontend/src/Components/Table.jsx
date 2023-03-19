@@ -1,21 +1,27 @@
 import Row from "./Row";
+import Table from "react-bootstrap/Table";
 
-function Table() {
+function CustomTable() {
   return (
-    <table className="table table-bordered text-center">
+    <Table
+      striped
+      bordered
+      variant="dark"
+      className="text-center border-secondary align-middle"
+    >
       <thead>
         <tr>
-          <th scope="col">Descrição</th>
-          <th scope="col">Valor A</th>
-          <th scope="col">Valor B</th>
-          <th scope="col">Ação</th>
+          <th>Descrição</th>
+          <th>Valor A</th>
+          <th>Valor B</th>
+          <th>Ação</th>
         </tr>
       </thead>
       <tbody>
         <Row />
       </tbody>
-    </table>
+    </Table>
   );
 }
 
-export default Table;
+export default CustomTable;

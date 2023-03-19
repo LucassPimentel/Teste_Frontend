@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
+import ModalComponent from "./ModalComponent";
 
 const Row = () => {
   const [data, setData] = useState([]);
@@ -17,14 +18,16 @@ const Row = () => {
       });
   }, []);
 
+  console.log(data);
+
   return fruits.map((fruit) => {
     return (
-      <tr>
+      <tr key={fruit.id}>
         <td>{fruit.descricao}</td>
         <td>{fruit.valor_A}</td>
         <td>{fruit.valor_B}</td>
         <td>
-          <button>Selecionar</button>
+          <ModalComponent data={fruit} />
         </td>
       </tr>
     );
