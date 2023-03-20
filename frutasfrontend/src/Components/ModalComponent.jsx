@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { styles } from "../style";
 
 function ModalComponent({ data }) {
   const [show, setShow] = useState(false);
@@ -11,11 +12,9 @@ function ModalComponent({ data }) {
     setResult();
     setShow(false);
   };
-
   const handleShow = () => setShow(true);
 
   const Multiplication = (a, b) => setResult(a * b);
-
   const Division = (a, b) =>
     setResult(Intl.NumberFormat("pt-BR").format(a / b));
 
@@ -24,23 +23,20 @@ function ModalComponent({ data }) {
       <Button variant="outline-light" onClick={handleShow}>
         Selecionar
       </Button>
-
       <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        animation={true}
       >
-        <Modal.Header
-          closeButton
-          style={{
-            backgroundColor: "#212529",
-            color: "white",
-          }}
-        >
+        <Modal.Header closeButton style={styles.CustomConfigModal}>
           <Modal.Title>Fruta</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{ backgroundColor: "#2c3034", color: "white" }}>
+        <Modal.Body
+          style={styles.CustomConfigModalBody}
+          className="CustomConfigsModal"
+        >
           <fieldset disabled>
             <Form.Group className="mb-3">
               <Form.Label>Descrição</Form.Label>
@@ -72,10 +68,7 @@ function ModalComponent({ data }) {
             </Form.Group>
           </fieldset>
         </Modal.Body>
-        <Modal.Footer
-          className="justify-content-center"
-          style={{ backgroundColor: "#212529" }}
-        >
+        <Modal.Footer style={styles.CustomConfigModal}>
           <Button variant="outline-danger" onClick={handleClose}>
             Fechar
           </Button>
